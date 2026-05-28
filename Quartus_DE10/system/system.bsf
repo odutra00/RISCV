@@ -1,0 +1,186 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 320 488)
+	(text "system" (rect 139 -1 169 11)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 472 20 484)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "clk_clk" (rect 0 0 27 12)(font "Arial" (font_size 8)))
+		(text "clk_clk" (rect 4 61 46 72)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 128 72)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "flash_address[13..0]" (rect 0 0 80 12)(font "Arial" (font_size 8)))
+		(text "flash_address[13..0]" (rect 4 101 124 112)(font "Arial" (font_size 8)))
+		(line (pt 0 112)(pt 128 112)(line_width 3))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "flash_chipselect" (rect 0 0 62 12)(font "Arial" (font_size 8)))
+		(text "flash_chipselect" (rect 4 117 100 128)(font "Arial" (font_size 8)))
+		(line (pt 0 128)(pt 128 128)(line_width 1))
+	)
+	(port
+		(pt 0 144)
+		(input)
+		(text "flash_clken" (rect 0 0 44 12)(font "Arial" (font_size 8)))
+		(text "flash_clken" (rect 4 133 70 144)(font "Arial" (font_size 8)))
+		(line (pt 0 144)(pt 128 144)(line_width 1))
+	)
+	(port
+		(pt 0 160)
+		(input)
+		(text "flash_write" (rect 0 0 42 12)(font "Arial" (font_size 8)))
+		(text "flash_write" (rect 4 149 70 160)(font "Arial" (font_size 8)))
+		(line (pt 0 160)(pt 128 160)(line_width 1))
+	)
+	(port
+		(pt 0 192)
+		(input)
+		(text "flash_writedata[31..0]" (rect 0 0 82 12)(font "Arial" (font_size 8)))
+		(text "flash_writedata[31..0]" (rect 4 181 136 192)(font "Arial" (font_size 8)))
+		(line (pt 0 192)(pt 128 192)(line_width 3))
+	)
+	(port
+		(pt 0 208)
+		(input)
+		(text "flash_byteenable[3..0]" (rect 0 0 87 12)(font "Arial" (font_size 8)))
+		(text "flash_byteenable[3..0]" (rect 4 197 136 208)(font "Arial" (font_size 8)))
+		(line (pt 0 208)(pt 128 208)(line_width 3))
+	)
+	(port
+		(pt 0 264)
+		(input)
+		(text "flash_1_data[31..0]" (rect 0 0 74 12)(font "Arial" (font_size 8)))
+		(text "flash_1_data[31..0]" (rect 4 253 118 264)(font "Arial" (font_size 8)))
+		(line (pt 0 264)(pt 128 264)(line_width 3))
+	)
+	(port
+		(pt 0 360)
+		(input)
+		(text "reset_reset_n" (rect 0 0 56 12)(font "Arial" (font_size 8)))
+		(text "reset_reset_n" (rect 4 349 82 360)(font "Arial" (font_size 8)))
+		(line (pt 0 360)(pt 128 360)(line_width 1))
+	)
+	(port
+		(pt 0 400)
+		(input)
+		(text "uart_rx" (rect 0 0 29 12)(font "Arial" (font_size 8)))
+		(text "uart_rx" (rect 4 389 46 400)(font "Arial" (font_size 8)))
+		(line (pt 0 400)(pt 128 400)(line_width 1))
+	)
+	(port
+		(pt 0 456)
+		(input)
+		(text "uart_clk_clk" (rect 0 0 48 12)(font "Arial" (font_size 8)))
+		(text "uart_clk_clk" (rect 4 445 76 456)(font "Arial" (font_size 8)))
+		(line (pt 0 456)(pt 128 456)(line_width 1))
+	)
+	(port
+		(pt 0 176)
+		(output)
+		(text "flash_readdata[31..0]" (rect 0 0 82 12)(font "Arial" (font_size 8)))
+		(text "flash_readdata[31..0]" (rect 4 165 130 176)(font "Arial" (font_size 8)))
+		(line (pt 0 176)(pt 128 176)(line_width 3))
+	)
+	(port
+		(pt 0 248)
+		(output)
+		(text "flash_1_addr[31..0]" (rect 0 0 75 12)(font "Arial" (font_size 8)))
+		(text "flash_1_addr[31..0]" (rect 4 237 118 248)(font "Arial" (font_size 8)))
+		(line (pt 0 248)(pt 128 248)(line_width 3))
+	)
+	(port
+		(pt 0 280)
+		(output)
+		(text "flash_1_stall" (rect 0 0 48 12)(font "Arial" (font_size 8)))
+		(text "flash_1_stall" (rect 4 269 82 280)(font "Arial" (font_size 8)))
+		(line (pt 0 280)(pt 128 280)(line_width 1))
+	)
+	(port
+		(pt 0 416)
+		(output)
+		(text "uart_tx" (rect 0 0 28 12)(font "Arial" (font_size 8)))
+		(text "uart_tx" (rect 4 405 46 416)(font "Arial" (font_size 8)))
+		(line (pt 0 416)(pt 128 416)(line_width 1))
+	)
+	(port
+		(pt 0 320)
+		(bidir)
+		(text "gpio_port[31..0]" (rect 0 0 60 12)(font "Arial" (font_size 8)))
+		(text "gpio_port[31..0]" (rect 4 309 100 320)(font "Arial" (font_size 8)))
+		(line (pt 0 320)(pt 128 320)(line_width 3))
+	)
+	(drawing
+		(text "clk" (rect 113 43 244 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 133 67 284 144)(font "Arial" (color 0 0 0)))
+		(text "flash" (rect 100 83 230 179)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "address" (rect 133 107 308 224)(font "Arial" (color 0 0 0)))
+		(text "chipselect" (rect 133 123 326 256)(font "Arial" (color 0 0 0)))
+		(text "clken" (rect 133 139 296 288)(font "Arial" (color 0 0 0)))
+		(text "write" (rect 133 155 296 320)(font "Arial" (color 0 0 0)))
+		(text "readdata" (rect 133 171 314 352)(font "Arial" (color 0 0 0)))
+		(text "writedata" (rect 133 187 320 384)(font "Arial" (color 0 0 0)))
+		(text "byteenable" (rect 133 203 326 416)(font "Arial" (color 0 0 0)))
+		(text "flash_1" (rect 87 219 216 451)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "addr" (rect 133 243 290 496)(font "Arial" (color 0 0 0)))
+		(text "data" (rect 133 259 290 528)(font "Arial" (color 0 0 0)))
+		(text "stall" (rect 133 275 296 560)(font "Arial" (color 0 0 0)))
+		(text "gpio" (rect 105 291 234 595)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "port" (rect 133 315 290 640)(font "Arial" (color 0 0 0)))
+		(text "reset" (rect 99 331 228 675)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "reset_n" (rect 133 355 308 720)(font "Arial" (color 0 0 0)))
+		(text "uart" (rect 106 371 236 755)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "rx" (rect 133 395 278 800)(font "Arial" (color 0 0 0)))
+		(text "tx" (rect 133 411 278 832)(font "Arial" (color 0 0 0)))
+		(text "uart_clk" (rect 82 427 212 867)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 133 451 284 912)(font "Arial" (color 0 0 0)))
+		(text " system " (rect 285 472 618 954)(font "Arial" ))
+		(line (pt 128 32)(pt 192 32)(line_width 1))
+		(line (pt 192 32)(pt 192 472)(line_width 1))
+		(line (pt 128 472)(pt 192 472)(line_width 1))
+		(line (pt 128 32)(pt 128 472)(line_width 1))
+		(line (pt 129 52)(pt 129 76)(line_width 1))
+		(line (pt 130 52)(pt 130 76)(line_width 1))
+		(line (pt 129 92)(pt 129 212)(line_width 1))
+		(line (pt 130 92)(pt 130 212)(line_width 1))
+		(line (pt 129 228)(pt 129 284)(line_width 1))
+		(line (pt 130 228)(pt 130 284)(line_width 1))
+		(line (pt 129 300)(pt 129 324)(line_width 1))
+		(line (pt 130 300)(pt 130 324)(line_width 1))
+		(line (pt 129 340)(pt 129 364)(line_width 1))
+		(line (pt 130 340)(pt 130 364)(line_width 1))
+		(line (pt 129 380)(pt 129 420)(line_width 1))
+		(line (pt 130 380)(pt 130 420)(line_width 1))
+		(line (pt 129 436)(pt 129 460)(line_width 1))
+		(line (pt 130 436)(pt 130 460)(line_width 1))
+		(line (pt 0 0)(pt 320 0)(line_width 1))
+		(line (pt 320 0)(pt 320 488)(line_width 1))
+		(line (pt 0 488)(pt 320 488)(line_width 1))
+		(line (pt 0 0)(pt 0 488)(line_width 1))
+	)
+)

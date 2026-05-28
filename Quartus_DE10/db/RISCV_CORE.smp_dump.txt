@@ -1,0 +1,14 @@
+
+State Machine - |RISCV_CORE|system:system_inst|uart_ip_avalon_interface:uart_0|uart_ip_verilog_wrapper:inst1|uart_ip:u0|uart_rx:u1|f_state
+Name f_state.s_done f_state.s_get_data f_state.s_get_start f_state.s_idle 
+f_state.s_idle 0 0 0 0 
+f_state.s_get_start 0 0 1 1 
+f_state.s_get_data 0 1 0 1 
+f_state.s_done 1 0 0 1 
+
+State Machine - |RISCV_CORE|system:system_inst|uart_ip_avalon_interface:uart_0|uart_ip_verilog_wrapper:inst1|uart_ip:u0|uart_tx:u0|f_state
+Name f_state.s_stop f_state.s_data f_state.s_start f_state.s_idle 
+f_state.s_idle 0 0 0 0 
+f_state.s_start 0 0 1 1 
+f_state.s_data 0 1 0 1 
+f_state.s_stop 1 0 0 1 

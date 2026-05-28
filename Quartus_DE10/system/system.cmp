@@ -1,0 +1,21 @@
+	component system is
+		port (
+			clk_clk          : in    std_logic                     := 'X';             -- clk
+			flash_address    : in    std_logic_vector(13 downto 0) := (others => 'X'); -- address
+			flash_chipselect : in    std_logic                     := 'X';             -- chipselect
+			flash_clken      : in    std_logic                     := 'X';             -- clken
+			flash_write      : in    std_logic                     := 'X';             -- write
+			flash_readdata   : out   std_logic_vector(31 downto 0);                    -- readdata
+			flash_writedata  : in    std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			flash_byteenable : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
+			flash_1_addr     : out   std_logic_vector(31 downto 0);                    -- addr
+			flash_1_data     : in    std_logic_vector(31 downto 0) := (others => 'X'); -- data
+			flash_1_stall    : out   std_logic;                                        -- stall
+			gpio_port        : inout std_logic_vector(31 downto 0) := (others => 'X'); -- port
+			reset_reset_n    : in    std_logic                     := 'X';             -- reset_n
+			uart_rx          : in    std_logic                     := 'X';             -- rx
+			uart_tx          : out   std_logic;                                        -- tx
+			uart_clk_clk     : in    std_logic                     := 'X'              -- clk
+		);
+	end component system;
+
