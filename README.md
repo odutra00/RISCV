@@ -1,3 +1,5 @@
+FPU Correted but still truncate instead of rouding the last bit.
+
 # 32 bit RISCV Implementation for FPGAs
 
 This is a soft implementation of a processor on the opensource RISC-V ISA. The project was created on Intel Quartus Prime software and tested on DE10 lite. The processor features a single issue, in-order 4-stage pipeline. It currently supports integer, multiply and single precision IEEE compliant floating point(without float-div) instruction sets.

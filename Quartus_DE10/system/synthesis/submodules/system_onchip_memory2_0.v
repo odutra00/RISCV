@@ -46,7 +46,7 @@ module system_onchip_memory2_0 (
                                )
 ;
 
-  parameter INIT_FILE = "/home/odutra/Work/Quartus/RISC/RISCV_Max10_ShaheerSajid/mem_init/sys_onchip_memory2_0.hex";
+  parameter INIT_FILE = "/home/odutra/Work/Quartus/RISC/RISCV/mem_init/sys_onchip_memory2_0.hex";
 
 
   output  [ 31: 0] readdata;

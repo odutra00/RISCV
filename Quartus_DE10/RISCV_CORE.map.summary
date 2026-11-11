@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Thu May 28 12:32:25 2026
+Analysis & Synthesis Status : Successful - Wed Nov 11 11:57:11 2026
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : RISCV_CORE
 Top-level Entity Name : RISCV_CORE
 Family : MAX 10
-Total logic elements : 8,194
-    Total combinational functions : 7,774
+Total logic elements : 8,213
+    Total combinational functions : 7,793
     Dedicated logic registers : 1,126
 Total registers : 1126
 Total pins : 67

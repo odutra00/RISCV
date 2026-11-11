@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(10M50DAF484) Path("/home/odutra/Work/Quartus/RISC/RISCV_Max10_ShaheerSajid/Quartus_DE10/") File("RISCV_CORE.sof") MfrSpec(OpMask(1));
+		Device PartName(10M50DAF484) Path("/home/odutra/Work/Quartus/RISC/RISCV/Quartus_DE10/") File("RISCV_CORE.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

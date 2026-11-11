@@ -1,8 +1,13 @@
+//! @brief FPU simples de 32-bits para RISC-V
+ //! @details Implementa: Soma, Subtracao, 
+ //! 		Multiplicacao e conversao
+ //! 		int2fp e fp2int.
 module FPU(A,B,sel,out);
 
-input [31:0] A,B;
-input	[4:0] sel;
-output reg [31:0] out;
+input [31:0] A; //! Operando A
+input [31:0] B; //! Operando B
+input	[4:0] sel; //! Selecao entre operacoes
+output reg [31:0] out; //! Resultado
 
 wire [31:0] res1, res2;
 wire [1:0] res3;
@@ -14,25 +19,25 @@ adder adder_inst
 	.a(A) ,	// input [31:0] a_sig
 	.b(B) ,	// input [31:0] b_sig
 	.op(add_sub) ,	// input  op_sig
-	.results(res1), 	// output [31:0] results_sig
+	.results(res1), // output [31:0] results_sig
 	.compare(res3)
 );
 multiply multiply_inst
 (
-	.iA(A) ,	// input [31:0] iA_sig
-	.iB(B) ,	// input [31:0] iB_sig
-	.oProd(res2) 	// output [31:0] oProd_sig
+	.iA(A) ,	 // input [31:0] iA_sig
+	.iB(B) ,	 // input [31:0] iB_sig
+	.oProd(res2) // output [31:0] oProd_sig
 );
 
 fp2int fp2int_inst
 (
-	.A(A) ,	// input [31:0] A_sig
+	.A(A) ,		// input [31:0] A_sig
 	.B(res5) 	// output [31:0] B_sig
 );
 
 int2fp int2fp_inst
 (
-	.A(A) ,	// input [31:0] A_sig
+	.A(A) ,		// input [31:0] A_sig
 	.B(res4) 	// output [31:0] B_sig
 );
 
@@ -60,226 +65,124 @@ always@(*)
 		default: begin add_sub =1'b0;  out  = 0; end//0
 	 endcase
 	end
-
-
 endmodule
 
 
 
-module adder(a,b,op,results, compare);
 
-input op;
-input [31:0]a,b;
 
-output reg [31:0]results;
-output reg [1:0] compare;
 
-reg [7:0] a_exp, b_exp, r_exp;
-reg [24:0] a_m, b_m, r_m;
-reg [22:0] final_m;
 
-reg a_sign, b_sign, r_sign;
+
+
+module adder(
+    input [31:0] a,
+    input [31:0] b,
+    input op,                // 0 = add, 1 = sub (a - b)
+    output reg [31:0] results,
+    output reg [1:0] compare
+);
+
+reg sign_a, sign_b;
+reg [7:0] exp_a, exp_b, exp_r;
+reg [23:0] mant_a, mant_b;
+reg [24:0] mant_r;
+reg sign_r;
 
 integer shift;
 integer i;
 
-always @(*)
-begin
-
-    //====================================================
-    // Default
-    //====================================================
-
-    results = 32'd0;
-    compare = 2;
-
-    //====================================================
+always @(*) begin
+    // ========================
     // Decompose
-    //====================================================
+    // ========================
+    sign_a = a[31];
+    sign_b = b[31] ^ op;   // aplica subtracao aqui
 
-    a_sign = a[31];
-    b_sign = b[31];
+    exp_a  = a[30:23];
+    exp_b  = b[30:23];
 
-    a_exp = a[30:23];
-    b_exp = b[30:23];
+    mant_a = (exp_a == 0) ? 24'd0 : {1'b1, a[22:0]};
+    mant_b = (exp_b == 0) ? 24'd0 : {1'b1, b[22:0]};
 
-    // hidden bit
-	 a_m = (a_exp == 0) ? 26'd0 : {1'b1, a[22:0]}; 
-	 b_m = (b_exp == 0) ? 26'd0 : {1'b1, b[22:0]};
-
-    //====================================================
-		// Compare
-		//====================================================
-
-		if(a_sign != b_sign) begin
-
-			 if(a_sign)
-				  compare = 1; // a < b
-			 else
-				  compare = 0; // a > b
-
-		end
-		else begin
-
-			 // mesmo sinal
-
-			 if(a_exp > b_exp) begin
-
-				  compare = a_sign ? 1 : 0;
-
-			 end
-			 else if(a_exp < b_exp) begin
-
-				  compare = a_sign ? 0 : 1;
-
-			 end
-			 else begin
-
-				  if(a_m > b_m)
-						compare = a_sign ? 1 : 0;
-
-				  else if(a_m < b_m)
-						compare = a_sign ? 0 : 1;
-
-				  else
-						compare = 2;
-			 end
-		end
-
-    //====================================================
-    // Align exponents
-    //====================================================
-
-    if(a_exp > b_exp)
-    begin
-        shift = a_exp - b_exp;
-        //b_m = b_m >> shift;
-			if(shift > 24)
-				 b_m = 0;
-			else
-				 b_m = b_m >> shift;
-
-        r_exp = a_exp;
-    end
-    else if(b_exp > a_exp)
-    begin
-        shift = b_exp - a_exp;
-        //a_m = a_m >> shift;
-			if(shift > 24)
-				 a_m = 0;
-			else
-				 a_m = a_m >> shift;
-
-        r_exp = b_exp;
-    end
-    else
-    begin
-        r_exp = a_exp;
+    // ========================
+    // Compare (para min/max)
+    // ========================
+    if (exp_a > exp_b) begin
+        compare = 0;
+    end else if (exp_b > exp_a) begin
+        compare = 1;
+    end else begin
+        if (mant_a > mant_b) compare = 0;
+        else if (mant_a < mant_b) compare = 1;
+        else compare = 2;
     end
 
-    //====================================================
-    // Add/Sub
-    //====================================================
-
-    if(op == 1'b0)
-    begin
-        //------------------------------------------------
-        // ADD
-        //------------------------------------------------
-
-        if(a_sign == b_sign)
-        begin
-            r_m = a_m + b_m;
-            r_sign = a_sign;
-
-            // carry normalize
-            if(r_m[24])
-            begin
-                r_m = r_m >> 1;
-                r_exp = r_exp + 1;
-            end
-        end
-        else
-        begin
-            if(a_m >= b_m)
-            begin
-                r_m = a_m - b_m;
-                r_sign = a_sign;
-            end
-            else
-            begin
-                r_m = b_m - a_m;
-                r_sign = b_sign;
-            end
-        end
+    // ========================
+    // Align
+    // ========================
+    if (exp_a > exp_b) begin
+        shift = exp_a - exp_b;
+        mant_b = mant_b >> shift;
+        exp_r = exp_a;
+    end else if (exp_b > exp_a) begin
+        shift = exp_b - exp_a;
+        mant_a = mant_a >> shift;
+        exp_r = exp_b;
+    end else begin
+        exp_r = exp_a;
     end
-    else
-    begin
-        //------------------------------------------------
-        // SUB
-        //------------------------------------------------
 
-        if(a_sign != b_sign)
-        begin
-            r_m = a_m + b_m;
-            r_sign = a_sign;
-
-				// carry normalize
-            if(r_m[24])
-            begin
-                r_m = r_m >> 1;
-                r_exp = r_exp + 1;
-            end
-        end
-        else
-        begin
-            if(a_m >= b_m)
-            begin
-                r_m = a_m - b_m;
-                r_sign = a_sign;
-            end
-            else
-            begin
-                r_m = b_m - a_m;
-                r_sign = ~a_sign;
-            end
+    // ========================
+    // Add/Sub mantissas
+    // ========================
+    if (sign_a == sign_b) begin
+        mant_r = mant_a + mant_b;
+        sign_r = sign_a;
+    end else begin
+        if (mant_a >= mant_b) begin
+            mant_r = mant_a - mant_b;
+            sign_r = sign_a;
+        end else begin
+            mant_r = mant_b - mant_a;
+            sign_r = sign_b;
         end
     end
 
-    //====================================================
-    // Zero detect
-    //====================================================
-
-    if(r_m == 0)
-    begin
+    // ========================
+    // Normalize
+    // ========================
+    if (mant_r == 0) begin
         results = 32'd0;
-    end
-    else
-    begin
+    end else begin
+        // overflow
+        if (mant_r[24]) begin
+            mant_r = mant_r >> 1;
+            exp_r = exp_r + 1;
+        end else begin
+            // normalizacao com limite fixo (SEM while)
+            for (i = 0; i < 24; i = i + 1) begin
+                if (mant_r[23] == 0 && exp_r > 0) begin
+                    mant_r = mant_r << 1;
+                    exp_r = exp_r - 1;
+                end
+            end
+        end
 
-        //================================================
-        // Normalize left
-        //================================================
-
-		  for(i = 0; i < 24; i = i + 1) begin 
-			if(r_m[23] == 0 && r_exp > 0) begin 
-				r_m = r_m << 1; 
-				r_exp = r_exp - 1; 
-			end 
-		  end
-
-        final_m = r_m[22:0];
-
-        //================================================
+        // ========================
         // Compose
-        //================================================
-
-        results = {r_sign, r_exp, final_m};
+        // ========================
+        results[31]    = sign_r;
+        results[30:23] = exp_r;
+        results[22:0]  = mant_r[22:0];
     end
-
 end
-
 endmodule
+
+
+
+
+
 
 module multiply(
     input      [31:0] iA,    // First input
@@ -297,7 +200,7 @@ module multiply(
     assign A_s = iA[31];
     assign A_e = iA[30:23];
 	//assign A_f = {1'b1, iA[22:0]};
-		assign A_f =
+	assign A_f =
 		 (A_e == 0) ?
 		 24'd0 :
 		 {1'b1, iA[22:0]};
@@ -305,9 +208,9 @@ module multiply(
     assign B_e = iB[30:23];
     //assign B_f = {1'b1, iB[22:0]};
 	 assign B_f =
-    (B_e == 0) ?
-    24'd0 :
-    {1'b1, iB[22:0]};
+        (B_e == 0) ?
+        24'd0 :
+        {1'b1, iB[22:0]};
 
     // XOR sign bits to determine product sign.
     wire        oProd_s;
@@ -338,6 +241,10 @@ module multiply(
                    {oProd_s, oProd_e, oProd_f};
 
 endmodule
+
+
+
+
 
 
 module int2fp(A,B);
@@ -406,6 +313,9 @@ begin
 		B = {sign, eout, mout};
 end // always @
 endmodule
+
+
+
 
 
 module fp2int(A,B);

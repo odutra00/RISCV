@@ -8,16 +8,16 @@ preplace inst system -pg 1 -lvl 1 -y 40 -regy -20
 preplace inst system.clock_bridge_0 -pg 1 -lvl 2 -y 410
 preplace inst system.clk_0 -pg 1 -lvl 1 -y 130
 preplace inst system.NU_CORE -pg 1 -lvl 2 -y 30
-preplace netloc EXPORT<net_container>system</net_container>(SLAVE)NU_CORE.conduit_end,(SLAVE)system.flash_1) 1 0 2 NJ 60 NJ
-preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
-preplace netloc FAN_OUT<net_container>system</net_container>(SLAVE)onchip_memory2_0.s1,(SLAVE)gpio_0.avalon_slave_0,(SLAVE)timer_0.avalon_slave_0,(SLAVE)uart_0.avalon_slave_0,(MASTER)NU_CORE.Data_Master) 1 2 1 520
-preplace netloc FAN_OUT<net_container>system</net_container>(SLAVE)uart_0.reset,(SLAVE)onchip_memory2_0.reset2,(SLAVE)timer_0.reset,(SLAVE)gpio_0.reset,(MASTER)clk_0.clk_reset,(SLAVE)onchip_memory2_0.reset1,(SLAVE)NU_CORE.reset) 1 1 2 310 160 580
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.flash_1,(SLAVE)NU_CORE.conduit_end) 1 0 2 NJ 60 NJ
+preplace netloc FAN_OUT<net_container>system</net_container>(MASTER)clk_0.clk_reset,(SLAVE)gpio_0.reset,(SLAVE)timer_0.reset,(SLAVE)onchip_memory2_0.reset2,(SLAVE)NU_CORE.reset,(SLAVE)onchip_memory2_0.reset1,(SLAVE)uart_0.reset) 1 1 2 310 160 580
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.uart,(SLAVE)uart_0.rx_tx) 1 0 3 NJ 460 NJ 460 NJ
 preplace netloc EXPORT<net_container>system</net_container>(SLAVE)gpio_0.gpio_port,(SLAVE)system.gpio) 1 0 3 NJ 120 NJ 140 NJ
-preplace netloc FAN_OUT<net_container>system</net_container>(SLAVE)gpio_0.clock,(MASTER)clk_0.clk,(SLAVE)timer_0.clock,(SLAVE)onchip_memory2_0.clk1,(SLAVE)NU_CORE.clock,(SLAVE)onchip_memory2_0.clk2) 1 1 2 290 120 540
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)clk_0.clk_in,(SLAVE)system.clk) 1 0 1 NJ
 preplace netloc EXPORT<net_container>system</net_container>(SLAVE)clock_bridge_0.in_clk,(SLAVE)system.uart_clk) 1 0 2 NJ 420 NJ
+preplace netloc FAN_OUT<net_container>system</net_container>(SLAVE)timer_0.clock,(MASTER)clk_0.clk,(SLAVE)gpio_0.clock,(SLAVE)onchip_memory2_0.clk2,(SLAVE)onchip_memory2_0.clk1,(SLAVE)NU_CORE.clock) 1 1 2 290 120 540
+preplace netloc FAN_OUT<net_container>system</net_container>(SLAVE)gpio_0.avalon_slave_0,(MASTER)NU_CORE.Data_Master,(SLAVE)onchip_memory2_0.s1,(SLAVE)timer_0.avalon_slave_0,(SLAVE)uart_0.avalon_slave_0) 1 2 1 520
 preplace netloc EXPORT<net_container>system</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)system.reset) 1 0 1 NJ
 preplace netloc POINT_TO_POINT<net_container>system</net_container>(SLAVE)uart_0.clock,(MASTER)clock_bridge_0.out_clk) 1 2 1 N
-preplace netloc EXPORT<net_container>system</net_container>(SLAVE)uart_0.rx_tx,(SLAVE)system.uart) 1 0 3 NJ 460 NJ 460 NJ
-preplace netloc EXPORT<net_container>system</net_container>(SLAVE)onchip_memory2_0.s2,(SLAVE)system.flash) 1 0 3 NJ 280 NJ 280 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.flash,(SLAVE)onchip_memory2_0.s2) 1 0 3 NJ 280 NJ 280 NJ
 levelinfo -pg 1 0 60 760
 levelinfo -hier system 70 100 340 630 750

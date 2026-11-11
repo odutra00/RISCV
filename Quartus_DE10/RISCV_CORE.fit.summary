@@ -1,12 +1,12 @@
-Fitter Status : Successful - Thu May 28 12:34:57 2026
+Fitter Status : Successful - Wed Nov 11 11:58:15 2026
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : RISCV_CORE
 Top-level Entity Name : RISCV_CORE
 Family : MAX 10
 Device : 10M50DAF484C7G
 Timing Models : Final
-Total logic elements : 8,105 / 49,760 ( 16 % )
-    Total combinational functions : 7,907 / 49,760 ( 16 % )
+Total logic elements : 8,114 / 49,760 ( 16 % )
+    Total combinational functions : 7,926 / 49,760 ( 16 % )
     Dedicated logic registers : 1,126 / 49,760 ( 2 % )
 Total registers : 1126
 Total pins : 67 / 360 ( 19 % )

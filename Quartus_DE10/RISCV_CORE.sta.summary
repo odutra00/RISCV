@@ -3,39 +3,39 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'pll_8m_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : -94.510
-TNS   : -2993.989
+Slack : -97.736
+TNS   : -3085.534
 
 Type  : Slow 1200mV 85C Model Setup 'MAX10_CLK1_50'
-Slack : 14.962
-TNS   : 0.000
-
-Type  : Slow 1200mV 85C Model Hold 'MAX10_CLK1_50'
-Slack : 0.340
+Slack : 15.244
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'pll_8m_inst|altpll_component|auto_generated|pll1|clk[0]'
 Slack : 0.340
 TNS   : 0.000
 
+Type  : Slow 1200mV 85C Model Hold 'MAX10_CLK1_50'
+Slack : 0.342
+TNS   : 0.000
+
 Type  : Slow 1200mV 85C Model Recovery 'MAX10_CLK1_50'
-Slack : 17.064
+Slack : 17.125
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Recovery 'pll_8m_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 43.378
+Slack : 44.743
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Removal 'pll_8m_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.937
+Slack : 0.938
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Removal 'MAX10_CLK1_50'
-Slack : 1.112
+Slack : 1.136
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'MAX10_CLK1_50'
-Slack : 9.636
+Slack : 9.644
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'pll_8m_inst|altpll_component|auto_generated|pll1|clk[0]'
@@ -43,83 +43,83 @@ Slack : 24.668
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'pll_8m_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : -81.281
-TNS   : -2572.843
+Slack : -84.413
+TNS   : -2663.363
 
 Type  : Slow 1200mV 0C Model Setup 'MAX10_CLK1_50'
-Slack : 15.332
-TNS   : 0.000
-
-Type  : Slow 1200mV 0C Model Hold 'MAX10_CLK1_50'
-Slack : 0.305
+Slack : 15.577
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'pll_8m_inst|altpll_component|auto_generated|pll1|clk[0]'
 Slack : 0.306
 TNS   : 0.000
 
+Type  : Slow 1200mV 0C Model Hold 'MAX10_CLK1_50'
+Slack : 0.307
+TNS   : 0.000
+
 Type  : Slow 1200mV 0C Model Recovery 'MAX10_CLK1_50'
-Slack : 17.301
+Slack : 17.320
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Recovery 'pll_8m_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 43.915
+Slack : 45.072
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Removal 'pll_8m_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.861
+Slack : 0.862
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Removal 'MAX10_CLK1_50'
-Slack : 1.030
+Slack : 1.054
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'MAX10_CLK1_50'
-Slack : 9.648
+Slack : 9.659
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'pll_8m_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 24.611
+Slack : 24.647
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'pll_8m_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : -10.289
-TNS   : -316.283
+Slack : -11.570
+TNS   : -352.418
 
 Type  : Fast 1200mV 0C Model Setup 'MAX10_CLK1_50'
-Slack : 17.763
-TNS   : 0.000
-
-Type  : Fast 1200mV 0C Model Hold 'MAX10_CLK1_50'
-Slack : 0.148
+Slack : 17.960
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'pll_8m_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.148
+Slack : 0.147
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'MAX10_CLK1_50'
+Slack : 0.149
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Recovery 'MAX10_CLK1_50'
-Slack : 18.617
+Slack : 18.642
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Recovery 'pll_8m_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 46.674
+Slack : 47.433
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Removal 'pll_8m_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.409
+Slack : 0.411
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Removal 'MAX10_CLK1_50'
-Slack : 0.477
+Slack : 0.491
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'MAX10_CLK1_50'
-Slack : 9.306
+Slack : 9.305
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'pll_8m_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 24.655
+Slack : 24.648
 TNS   : 0.000
 
 ------------------------------------------------------------
